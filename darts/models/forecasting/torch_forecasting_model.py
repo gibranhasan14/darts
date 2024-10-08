@@ -1476,11 +1476,11 @@ class TorchForecastingModel(GlobalForecastingModel, ABC):
             predict_likelihood_parameters=predict_likelihood_parameters,
         )
        
-        # return predictions[0] if called_with_single_series else predictions
-       if predictions:
-          return predictions[0] if called_with_single_series else predictions
-       else:
-          return None
+        return predictions[0] if called_with_single_series else predictions
+        if predictions:
+           return predictions[0] if called_with_single_series else predictions
+        else:
+           return None
 
     @random_method
     def predict_from_dataset(
@@ -1619,11 +1619,11 @@ class TorchForecastingModel(GlobalForecastingModel, ABC):
         predictions = self.trainer.predict(model=self.model, dataloaders=pred_loader)
         # flatten and return
 
-        # return [ts for batch in predictions for ts in batch]
-       if predictions:
-          return [ts for batch in predictions for ts in batch]
-       else:
-          return None
+        return [ts for batch in predictions for ts in batch]
+        if predictions:
+           return [ts for batch in predictions for ts in batch]
+        else:
+           return None
 
     @property
     def first_prediction_index(self) -> int:
