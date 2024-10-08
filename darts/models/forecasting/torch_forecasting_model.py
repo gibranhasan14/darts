@@ -1477,10 +1477,9 @@ class TorchForecastingModel(GlobalForecastingModel, ABC):
         )
        
         # return predictions[0] if called_with_single_series else predictions
-       
        if predictions:
           return predictions[0] if called_with_single_series else predictions
-      else:
+       else:
           return None
 
     @random_method
